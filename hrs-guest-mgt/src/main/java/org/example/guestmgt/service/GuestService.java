@@ -20,6 +20,7 @@ public class GuestService {
     }
 
     public void checkOut(String name) {
+        // todo: check if there are any parcels waiting to be collected
         boolean checkedOut = guestManager.checkOut(name);
         if (checkedOut) {
             log.info("Guest [{}] is checked out", name);

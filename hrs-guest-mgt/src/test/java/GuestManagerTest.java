@@ -8,10 +8,12 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Testing GuestManager since most logic is completed in this class, ideally could write more
- * unit tests about:
- * 1. Controller layer: input validation, HTTP response codes in various situations
- * 2. Edge cases like empty strings, null, etc.
+ * Testing GuestManager since most logic is completed in this class,
+ * edge cases like empty strings, null inputs are not considered since data validation would be handled
+ * in controller layer.
+ * <p>
+ * Ideally could write more unit tests about controller layer:
+ * input validation, HTTP response codes in various situations
  */
 public class GuestManagerTest {
     private GuestManager guestManager;

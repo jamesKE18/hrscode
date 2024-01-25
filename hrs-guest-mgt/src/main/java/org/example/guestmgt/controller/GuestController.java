@@ -16,16 +16,17 @@ public class GuestController {
 
     @Autowired
     private GuestService guestService;
-
+    
+    // todo: input validation
     @PostMapping("/check-in")
-    @ApiOperation(value = "Checks a guest into the hotel")
+    @ApiOperation(value = "Guest Check-in", notes = "Checks a guest into the hotel")
     public GlobalRestResponse<Object> checkIn(@RequestBody Guest guest) {
         guestService.checkIn(guest);
         return GlobalRestResponse.ok();
     }
 
     @PostMapping("/check-out")
-    @ApiOperation(value = "Checks a guest out of the hotel")
+    @ApiOperation(value = "Guest Check-out", notes = "Checks a guest out of the hotel")
     public GlobalRestResponse<Object> checkOut(@RequestBody Guest guest) {
         guestService.checkOut(guest.getName());
         return GlobalRestResponse.ok();
@@ -35,8 +36,8 @@ public class GuestController {
     // But considering in practice we would normally use an anonymous id instead,
     // it is used in this task to follow REST api conventions
     @GetMapping("/in-house")
-    @ApiOperation(value = "List all the in-house guests, if parameter is provided, " +
-            "check if that specific gueest is in the hotel")
+    @ApiOperation(value = "List in-house guests", notes = "List all the in-house guests, " +
+            "if parameter is provided, check if that specific gueest is in the hotel")
     public GlobalRestResponse<List<Guest>> listInHouseGuests(
             @RequestParam(required = false) String name) {
         return GlobalRestResponse.ok(guestService.listGuests(name));

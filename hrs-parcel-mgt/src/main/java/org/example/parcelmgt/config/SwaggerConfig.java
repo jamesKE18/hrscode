@@ -1,8 +1,7 @@
-package org.example.guestmgt.config;
+package org.example.parcelmgt.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -39,7 +38,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 .enable(true)
                 .select()
                 .apis(RequestHandlerSelectors
-                        .basePackage("org.example.guestmgt.controller"))
+                        .basePackage("org.example.parcelmgt.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -48,7 +47,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
         Contact contact = new springfox.documentation.service.Contact(
                 "Wenhan Ke", "", "");
         return new ApiInfoBuilder()
-                .title("HRS Guest Service")
+                .title("HRS Parcel Service")
                 .version("1.0")
                 .description("Hrs interview code challenge")
                 .contact(contact)
