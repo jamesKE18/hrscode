@@ -23,3 +23,5 @@
 hs_err_pid*
 replay_pid*
 /.idea/
+/hrs-parcel-mgt/target/
+/hrs-guest-mgt/target/
