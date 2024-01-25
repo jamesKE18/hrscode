@@ -23,4 +23,11 @@ public class GlobalRestResponse<T> {
         response.setData(data);
         return response;
     }
+
+    public static <T> GlobalRestResponse<T> error(String message, T data) {
+        GlobalRestResponse<T> response = new GlobalRestResponse<>();
+        response.setMessage(message);
+        response.setData(data);
+        return response;
+    }
 }

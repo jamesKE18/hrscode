@@ -3,6 +3,8 @@ package org.example.parcelmgt.dao;
 import org.example.parcelmgt.entity.Parcel;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,29 @@ import java.util.Map;
 @Component
 public class ParcelManager {
     private final Map<String, List<Parcel>> parcelsMap = new HashMap<>();
+
+    /**
+     * Add some initial data, simulate a DB
+     */
+    @PostConstruct
+    public void initialize() {
+        // Add 2 parcel to James
+        Parcel jamesParcel = new Parcel();
+        jamesParcel.setRecipient("James");
+        jamesParcel.setContent("Phone");
+        addParcel(jamesParcel);
+
+        jamesParcel = new Parcel();
+        jamesParcel.setRecipient("James");
+        jamesParcel.setContent("Laptop");
+        addParcel(jamesParcel);
+
+        // Add 1 parcel to Jack
+        Parcel jackParcel = new Parcel();
+        jackParcel.setRecipient("Jack");
+        jackParcel.setContent("Pen");
+        addParcel(jackParcel);
+    }
 
     /**
      * Add a parcel to the system

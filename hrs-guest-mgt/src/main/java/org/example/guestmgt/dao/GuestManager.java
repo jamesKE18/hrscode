@@ -1,9 +1,11 @@
 package org.example.guestmgt.dao;
 
 import lombok.extern.slf4j.Slf4j;
+import net.bytebuddy.asm.Advice;
 import org.example.guestmgt.entity.Guest;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -18,6 +20,22 @@ import java.util.*;
 @Component
 public class GuestManager {
     private final Map<String, Guest> guests = new HashMap<>();
+
+    /**
+     * Add some initial data, simulate a DB
+     */
+    @PostConstruct
+    public void initialize() {
+        Guest james = new Guest();
+        james.setName("James");
+        james.setCheckInTime(LocalDateTime.now().minusMinutes(10L));
+        checkIn(james);
+
+        Guest jack = new Guest();
+        jack.setName("Jack");
+        jack.setCheckInTime(LocalDateTime.now().minusMinutes(30L));
+        checkIn(jack);
+    }
 
     /**
      * Checks the guest into the hotel

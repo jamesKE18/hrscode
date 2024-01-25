@@ -3,6 +3,7 @@ package org.example.guestmgt.controller;
 import io.swagger.annotations.ApiOperation;
 import org.example.guestmgt.entity.GlobalRestResponse;
 import org.example.guestmgt.entity.Guest;
+import org.example.guestmgt.entity.GuestCheckOutResponse;
 import org.example.guestmgt.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class GuestController {
 
     @Autowired
     private GuestService guestService;
-    
+
     // todo: input validation
     @PostMapping("/check-in")
     @ApiOperation(value = "Guest Check-in", notes = "Checks a guest into the hotel")
@@ -27,9 +28,9 @@ public class GuestController {
 
     @PostMapping("/check-out")
     @ApiOperation(value = "Guest Check-out", notes = "Checks a guest out of the hotel")
-    public GlobalRestResponse<Object> checkOut(@RequestBody Guest guest) {
-        guestService.checkOut(guest.getName());
-        return GlobalRestResponse.ok();
+    public GlobalRestResponse<GuestCheckOutResponse> checkOut(@RequestBody Guest guest) {
+        GuestCheckOutResponse response = guestService.checkOut(guest.getName());
+        return GlobalRestResponse.ok(response);
     }
 
     // Guest name as sensitive data in the query url of GET call is exposing user info.
